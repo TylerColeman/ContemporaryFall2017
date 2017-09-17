@@ -53,7 +53,7 @@ If you would like to stop please type [exit]")
     enc_or_dec = inputs[1]
 
     #get input 3 (Shift value)
-    print("Please enter the shift value that your document will be " + str(enc_or_dec) + "ed with.\n")
+    print("Please enter the shift value that your document will be " + str(enc_or_dec) + "ed with.")
     #get user input
     shift = input()
     #make sure they do not want to exit
@@ -123,9 +123,10 @@ def input_check(user_input, type_input):
             shift = int(shift)
             if(str(shift).lower() == "exit"): program_kill()
             if shift < 0:
-                abs(shift)
+                shift = abs(shift)
+                print("")
         except ValueError:
-            print("Please enter a valid key, Valid keys include 0 < key < 1000000.\n")
+            print("Please enter a valid shift. The shift value must be an integer greater than 0.")
             invalid_shift = True
             while invalid_shift:
                 try:
@@ -135,18 +136,23 @@ def input_check(user_input, type_input):
                     if shift < 0:
                         shift = abs(shift)
                 except ValueError:
-                    print("Please enter a valid key, Valid keys include 0 < key < 1000000.\n")
-        return shift
+                    print("Please enter a valid shift. The shift value must be an integer greater than 0.")
+        return int(shift)
 
 
 """
-    @Function: Get_Input
-    @Parameters: None
-    @Returns: A list (inputs)
-    @Description: This function promtps the user for 3 inputs
-    A file name, a function(encrypt or decrypt) and the shift
-    value that the file will be encrypted or decrypted with.
-    All of these inputs are validated by calling the input_check.
+    @Function: encrypt_or_decrypt
+
+    @Parameters: A list (un encrypted list of all chars in the document), 
+    An integer (The value that the file will be encrypted with),
+    A string (This will tell the function whether to encrypt or decrypt the file.)
+
+    @Returns: A list (the encrypted list of all chars in the document)
+
+    @Description: This function takes a list of characters and makes a new list 
+    of characters that are either encrypted or decrypted depending on user input.
+    The encryption method is a simple alphabetic shift right or left by the "shift"
+    value passed in.
 """
 def encrypt_or_decrypt(char_list, shift, enc_or_dec):
     #converts the chars in the words_list to their ascii values
@@ -171,8 +177,11 @@ def encrypt_or_decrypt(char_list, shift, enc_or_dec):
 #     return decrypted_char_list
 """
     @Function: program_kill
+
     @Parameters: None
+
     @Returns: None
+    
     @Description: This function is used at every user input
     prompt. if the user ever enters the string "exit" (not case sensitive)
     the program will immediately stop.
@@ -196,6 +205,7 @@ if __name__ == '__main__':
         f = open(inputs[0], 'r+')
         pre_encrypted = []
         char_list= []
+
         #Make a list of all lines in the file
         for line in f:
             pre_encrypted.append(line)
@@ -206,16 +216,16 @@ if __name__ == '__main__':
         #can be overwritten with the encrypted/decrypted version.
         f.seek(0)
         f.truncate()
-        #User wants to encrypt the document
+        #User wants to encrypt the file
         if enc_or_dec == "encrypt":
             encrypted_list = []
-            encrypted_list = encrypt_char_list(char_list, shift)
+            encrypted_list = encrypt_or_decrypt(char_list, shift, 'encrypt')
             f.write(''.join(encrypted_list))
             print("Your file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "]\n")
         #The user wants to decrypt the file
         else:
             decrypted_list = []
-            decrypted_list = decrypt_char_list(char_list, shift)
+            decrypted_list = encrypt_or_decrypt(char_list, shift, 'decrypt')
             f.write(''.join(decrypted_list))
             print("Your file has been decrypted!")
         
