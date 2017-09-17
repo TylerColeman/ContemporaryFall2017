@@ -13,8 +13,11 @@ UNDERCASE_ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o
 
 """
     @Function: get_input
+
     @Parameters: None
+
     @Returns: A list of the 3 user inputs stored in (inputs)
+
     @Description: This function promtps the user for 3 inputs
     A file name, a function(encrypt or decrypt) and the shift
     value that the file will be encrypted or decrypted with.
@@ -64,20 +67,23 @@ If you would like to stop please type [exit]")
 
 """
     @Function: input_check
+
     @Parameters: user_input, type_input
-    @Returns: A list (inputs)
-    @Description: This function promtps the user for 3 inputs
-    A file name, a function(encrypt or decrypt) and the shift
-    value that the file will be encrypted or decrypted with.
-    All of these inputs are validated by calling the input_check.
+
+    @Returns: Either a string(filename), a string(encrypt/decrypt)
+    or an integer value (shift) depending on which "type_input"
+    is passed from the get_input function
+
+    @Description: This function validates the 3 User inputs that are aquired 
+    from the get_input function i.e. the filename must exist
+    in the current directory, a valid function must be called
+    (encrypt/decrypt) and the shift value must be an integer.
 """
 def input_check(user_input, type_input):
-    #filename checker
-    """
-        This block tries to open the file for reading and excepts on a 
-        FileNotFoundError the except statement runs another try except 
-        block in a while loop that asks for a new user input
-    """
+    #filename checker:
+    # This block tries to open the file for reading and excepts on a 
+    # FileNotFoundError the except statement runs another try except 
+    # block in a while loop that asks for a new user input and validates.
     if type_input == 'filename':
         filename = user_input
         try:
@@ -90,7 +96,7 @@ def input_check(user_input, type_input):
                     filename = input()
                     if(str(filename).lower() == "exit"): 
                         program_kill()
-                    f = open(filename, 'r+',)
+                    f = open(filename, 'r',)
                     invalid_filename = False
                 except FileNotFoundError:
                     print("Please enter a valid file name in your working directory.")
@@ -98,15 +104,18 @@ def input_check(user_input, type_input):
         #return the validated filename
         return filename
 
-
+    #Function checker
+    # This block makes sure the user has entered the string encrypt
+    # of decrypt (or exit) then returns the validated value.
     elif type_input == 'function':
         enc_or_dec = user_input
         while enc_or_dec.lower() != "encrypt" and enc_or_dec.lower() != "decrypt":
             print("Please enter a valid function: [encrypt] or [decrypt]")
             enc_or_dec = input()
-            if(str(enc_or_dec).lower() == "exit"): program_kill()
-        return enc_or_dec
-
+            if(str(enc_or_dec).lower() == "exit"): 
+                program_kill()
+        return enc_or_dec.lower()
+    #Shift Checker
     else:
         shift = user_input
     #Validate that the key is within the specified range and it is an integer  
@@ -114,7 +123,7 @@ def input_check(user_input, type_input):
             shift = int(shift)
             if(str(shift).lower() == "exit"): program_kill()
             if shift < 0:
-                shift = 0
+                abs(shift)
         except ValueError:
             print("Please enter a valid key, Valid keys include 0 < key < 1000000.\n")
             invalid_shift = True
@@ -124,7 +133,7 @@ def input_check(user_input, type_input):
                     if(str(shift).lower() == "exit"): program_kill()
                     invalid_shift = False
                     if shift < 0:
-                        shift = 0
+                        shift = abs(shift)
                 except ValueError:
                     print("Please enter a valid key, Valid keys include 0 < key < 1000000.\n")
         return shift
@@ -139,41 +148,34 @@ def input_check(user_input, type_input):
     value that the file will be encrypted or decrypted with.
     All of these inputs are validated by calling the input_check.
 """
-def encrypt_char_list(char_list, shift):
+def encrypt_or_decrypt(char_list, shift, enc_or_dec):
     #converts the chars in the words_list to their ascii values
     ascii_list = [ord(char) for char in char_list]
+    if(enc_or_dec == 'decrypt'):
+        shift = shift * -1
     """This statement is a list comprehension statement that is using a ternary operation.
        It checks the case of the character and applies the proper shift in the ascii table above. If the
        symbol that is found is not a letter it converts it to its char form.
        source for this idea: https://stackoverflow.com/questions/9987483/elif-in-list-comprehension-conditionals
     """ 
-    encrypted_char_list = [UPPERCASE_ALPHABET[((i - 65) + (shift % 26)) % 26] if (i >= 65 and i <=90) else 
-    UNDERCASE_ALPHABET[((i - 97) + (shift % 26)) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
+    encrypted_char_list = [UPPERCASE_ALPHABET[(i - 65 + shift) % 26] if (i >= 65 and i <=90) else 
+    UNDERCASE_ALPHABET[(i - 97 + shift) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
     return encrypted_char_list
+
+# def decrypt_char_list(char_list, shift):
+#     #Same steps to decrypt the file as the encrypt function
+#     #just subtract the shift value instead.
+#     ascii_list = [ord(char) for char in char_list]
+#     decrypted_char_list = [UPPERCASE_ALPHABET[((i - 65) - (shift % 26)) % 26] if (i >= 65 and i <=90) else 
+#     UNDERCASE_ALPHABET[((i - 97) - (shift % 26)) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
+#     return decrypted_char_list
 """
-    @Function: Get_Input
+    @Function: program_kill
     @Parameters: None
-    @Returns: A list (inputs)
-    @Description: This function promtps the user for 3 inputs
-    A file name, a function(encrypt or decrypt) and the shift
-    value that the file will be encrypted or decrypted with.
-    All of these inputs are validated by calling the input_check.
-"""
-def decrypt_char_list(char_list, shift):
-    #Same steps to decrypt the file as the encrypt function
-    #just subtract the shift value instead.
-    ascii_list = [ord(char) for char in char_list]
-    decrypted_char_list = [UPPERCASE_ALPHABET[((i - 65) - (shift % 26)) % 26] if (i >= 65 and i <=90) else 
-    UNDERCASE_ALPHABET[((i - 97) - (shift % 26)) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
-    return decrypted_char_list
-"""
-    @Function: Get_Input
-    @Parameters: None
-    @Returns: A list (inputs)
-    @Description: This function promtps the user for 3 inputs
-    A file name, a function(encrypt or decrypt) and the shift
-    value that the file will be encrypted or decrypted with.
-    All of these inputs are validated by calling the input_check.
+    @Returns: None
+    @Description: This function is used at every user input
+    prompt. if the user ever enters the string "exit" (not case sensitive)
+    the program will immediately stop.
 """
 def program_kill():
     print("Thank you for using the encrypter/decrypter 9000.\n")
@@ -184,7 +186,7 @@ def program_kill():
 #Main
 if __name__ == '__main__':
     
-    print("Welcome to the document encrypter/decrypter 9000\n\n")
+    print("Welcome to the document encrypter/decrypter 9000\n")
     in_use = True
     while(in_use):
         inputs = get_input()
@@ -200,6 +202,8 @@ if __name__ == '__main__':
             #Make a list of all characters in all lines in the document
             for char in line:
                 char_list.append(char)
+        #Clear out the contents of the file so that it
+        #can be overwritten with the encrypted/decrypted version.
         f.seek(0)
         f.truncate()
         #User wants to encrypt the document
@@ -207,14 +211,14 @@ if __name__ == '__main__':
             encrypted_list = []
             encrypted_list = encrypt_char_list(char_list, shift)
             f.write(''.join(encrypted_list))
+            print("Your file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "]\n")
         #The user wants to decrypt the file
         else:
             decrypted_list = []
             decrypted_list = decrypt_char_list(char_list, shift)
             f.write(''.join(decrypted_list))
-
-        #Friendly Reminder.
-        print("Your file has been encrypted! Don't forget your decryption key is [" + str(shift) + "]\n")
+            print("Your file has been decrypted!")
+        
         f.close()
 
 """
