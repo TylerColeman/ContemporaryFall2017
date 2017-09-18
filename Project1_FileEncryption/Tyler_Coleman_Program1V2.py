@@ -124,7 +124,7 @@ def input_check(user_input, type_input):
             if(str(shift).lower() == "exit"): program_kill()
             if shift < 0:
                 shift = abs(shift)
-                print("")
+                print("The shift value must be an integer the absolute value of any negative entry will be used.")
         except ValueError:
             print("Please enter a valid shift. The shift value must be an integer greater than 0.")
             invalid_shift = True
@@ -135,6 +135,7 @@ def input_check(user_input, type_input):
                     invalid_shift = False
                     if shift < 0:
                         shift = abs(shift)
+                        print("The shift value must be an integer the absolute value of any negative entry will be used.")
                 except ValueError:
                     print("Please enter a valid shift. The shift value must be an integer greater than 0.")
         return int(shift)
@@ -155,8 +156,10 @@ def input_check(user_input, type_input):
     value passed in.
 """
 def encrypt_or_decrypt(char_list, shift, enc_or_dec):
-    #converts the chars in the words_list to their ascii values
+    #converts the chars in the char_List to their ascii values
     ascii_list = [ord(char) for char in char_list]
+
+    #negate the shift value if the user wants to decrypt the file
     if(enc_or_dec == 'decrypt'):
         shift = shift * -1
     """This statement is a list comprehension statement that is using a ternary operation.
@@ -166,15 +169,8 @@ def encrypt_or_decrypt(char_list, shift, enc_or_dec):
     """ 
     encrypted_char_list = [UPPERCASE_ALPHABET[(i - 65 + shift) % 26] if (i >= 65 and i <=90) else 
     UNDERCASE_ALPHABET[(i - 97 + shift) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
+    #return the character list created by the above list comprehension statement.
     return encrypted_char_list
-
-# def decrypt_char_list(char_list, shift):
-#     #Same steps to decrypt the file as the encrypt function
-#     #just subtract the shift value instead.
-#     ascii_list = [ord(char) for char in char_list]
-#     decrypted_char_list = [UPPERCASE_ALPHABET[((i - 65) - (shift % 26)) % 26] if (i >= 65 and i <=90) else 
-#     UNDERCASE_ALPHABET[((i - 97) - (shift % 26)) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
-#     return decrypted_char_list
 """
     @Function: program_kill
 
