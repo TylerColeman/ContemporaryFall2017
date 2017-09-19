@@ -1,0 +1,1 @@
+print(open(input(), 'r').read().count("the." or "the "))
