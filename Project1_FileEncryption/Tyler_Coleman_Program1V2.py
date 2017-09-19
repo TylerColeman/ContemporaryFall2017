@@ -4,24 +4,29 @@ Tyler Coleman
 
 CMPS 4143 Contemporary Programming Languages: Fall 2017
 
+Data Structure(s) Used: [List]
+
 Description: This program will take a user specified file and encrypt it, or
              decrypt it depending on the user's input.
 """
 #Alphabet Tables for use in the encrypt_char_list and decrypt_char_list
-UPPERCASE_ALPHABET = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-UNDERCASE_ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+UPPERCASE_ALPHABET = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
+                      'N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+UNDERCASE_ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
+                      'n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 """
     @Function: get_input
 
     @Parameters: None
 
-    @Returns: A list of the 3 user inputs stored in (inputs)
+    @Returns: A list of the 3 user inputs stored in the list (inputs)
 
     @Description: This function promtps the user for 3 inputs
     A file name, a function(encrypt or decrypt) and the shift
     value that the file will be encrypted or decrypted with.
-    All of these inputs are validated by calling the input_check.
+    All of these inputs are validated by calling input_check function.
 """
 def get_input():
     #get input 1 (file name)
@@ -53,7 +58,10 @@ If you would like to stop please type [exit]")
     enc_or_dec = inputs[1]
 
     #get input 3 (Shift value)
-    print("Please enter the shift value that your document will be " + str(enc_or_dec) + "ed with.")
+    if(enc_or_dec == 'encrypt'):
+        print("Please enter the shift value that your document will be encrypted with.")
+    else:
+        print("Please enter the shift value that your document was encrypted with.")
     #get user input
     shift = input()
     #make sure they do not want to exit
@@ -87,10 +95,13 @@ def input_check(user_input, type_input):
     if type_input == 'filename':
         filename = user_input
         try:
+            #Try to Open the file
             f = open(filename, 'r',)
         except FileNotFoundError:
             print("Please enter a valid file name in your working directory.")
             invalid_filename = True
+            #The first filename was invalid, so loop until the User enters a valid file name
+            #or "exit"
             while invalid_filename:
                 try:
                     filename = input()
@@ -109,43 +120,53 @@ def input_check(user_input, type_input):
     # of decrypt (or exit) then returns the validated value.
     elif type_input == 'function':
         enc_or_dec = user_input
+        #Loop until the user enters either "encrypt" or "decrypt" (Not case sensitive).
         while enc_or_dec.lower() != "encrypt" and enc_or_dec.lower() != "decrypt":
             print("Please enter a valid function: [encrypt] or [decrypt]")
             enc_or_dec = input()
             if(str(enc_or_dec).lower() == "exit"): 
                 program_kill()
         return enc_or_dec.lower()
+
     #Shift Checker
     else:
         shift = user_input
     #Validate that the key is within the specified range and it is an integer  
         try:
+            #This will ValueError if shift is not an integer
             shift = int(shift)
             if(str(shift).lower() == "exit"): program_kill()
+            #The user entered a negative shift, so i take the absolute value and let them know.
             if shift < 0:
                 shift = abs(shift)
                 print("The shift value must be an integer the absolute value of any negative entry will be used.")
         except ValueError:
             print("Please enter a valid shift. The shift value must be an integer greater than 0.")
             invalid_shift = True
+            #Run until we get valid input or the user enters "exit"
             while invalid_shift:
                 try:
+                    #again looking for a ValueError
                     shift = int(input())
-                    if(str(shift).lower() == "exit"): program_kill()
+                    if(str(shift).lower() == "exit"): 
+                        program_kill()
+                    #We finally got good user input
                     invalid_shift = False
+                    #The user entered a negative shift, so i take the absolute value and let them know.
                     if shift < 0:
                         shift = abs(shift)
                         print("The shift value must be an integer the absolute value of any negative entry will be used.")
                 except ValueError:
                     print("Please enter a valid shift. The shift value must be an integer greater than 0.")
+        
         return int(shift)
 
 
 """
     @Function: encrypt_or_decrypt
 
-    @Parameters: A list (un encrypted list of all chars in the document), 
-    An integer (The value that the file will be encrypted with),
+    @Parameters: A list (un-encrypted list of all chars in the document), 
+    An integer (The value that the characters will be shifted by in the english alphabet.),
     A string (This will tell the function whether to encrypt or decrypt the file.)
 
     @Returns: A list (the encrypted list of all chars in the document)
@@ -192,35 +213,40 @@ def program_kill():
 if __name__ == '__main__':
     
     print("Welcome to the document encrypter/decrypter 9000\n")
+    #The program will allow the user to encrypt or decrypt files until they
+    #enter the string "exit".
     in_use = True
     while(in_use):
+        #Set inputs to our I/O function that will deal with getting
+        #USer inputs and validating them.
         inputs = get_input()
+        
+        #Set the 3 inputs to variables for readability
         filename = inputs[0]
         enc_or_dec = inputs[1]
         shift = int(inputs[2])
+        
         f = open(inputs[0], 'r+')
-        pre_encrypted = []
-        char_list= []
 
-        #Make a list of all lines in the file
+        #This will store all chars in the document.
+        char_list= []
+        #Loop through every character in every line in the file
         for line in f:
-            pre_encrypted.append(line)
-            #Make a list of all characters in all lines in the document
             for char in line:
                 char_list.append(char)
         #Clear out the contents of the file so that it
         #can be overwritten with the encrypted/decrypted version.
         f.seek(0)
         f.truncate()
+
         #User wants to encrypt the file
         if enc_or_dec == "encrypt":
-            encrypted_list = []
             encrypted_list = encrypt_or_decrypt(char_list, shift, 'encrypt')
             f.write(''.join(encrypted_list))
             print("Your file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "]\n")
+       
         #The user wants to decrypt the file
         else:
-            decrypted_list = []
             decrypted_list = encrypt_or_decrypt(char_list, shift, 'decrypt')
             f.write(''.join(decrypted_list))
             print("Your file has been decrypted!")
