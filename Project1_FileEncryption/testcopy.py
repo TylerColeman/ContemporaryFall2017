@@ -31,39 +31,37 @@ UNDERCASE_ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
     All of these inputs are validated by calling input_check function.
 """
 def get_input():
-    #get input 1 (file name)
+#     #get input 1 (file name)
+#     inputs = []
+#     print("Please enter a file name with it's extension (then press enter).\n\
+# You can type [exit] at anytime to terminate the program.")
+#     #get the user input
+#     filename = input()
+#     #make sure they do not want to exit
+#     if(str(filename).lower() == "exit"): 
+#         program_kill()
+#     #append the file name to the empty list after it 
+#     #is put through the input checking funciton
+#     inputs.append(input_check(filename, 'filename'))
+#     filename = inputs[0]
+
+#     #get input 2 (encrypt or decrypt)
+#     print("\nIf you would like " + filename + " encrypted please type [encrypt].\n\
+# If you would like " + filename + " decrypted please type [decrypt].\n\
+# If you would like to stop please type [exit].")
+#     #get the user input
+#     enc_or_dec = input()
+#     #make sure they do not want to exit
+#     if(str(enc_or_dec).lower() == "exit"): 
+#         program_kill()
+#     #append the function the user desires to the 
+#     #inputs list after i #is put through input checking.
+#     inputs.append(input_check(enc_or_dec, 'function'))
+#     enc_or_dec = inputs[1]
+
     inputs = []
-    print("Please enter a file name with it's extension (then press enter).\n\
-You can type [exit] at anytime to terminate the program.")
-    #get the user input
-    filename = input()
-    #make sure they do not want to exit
-    if(str(filename).lower() == "exit"): 
-        program_kill()
-    #append the file name to the empty list after it 
-    #is put through the input checking funciton
-    inputs.append(input_check(filename, 'filename'))
-    filename = inputs[0]
 
-    #get input 2 (encrypt or decrypt)
-    print("\nIf you would like " + filename + " encrypted please type [encrypt].\n\
-If you would like " + filename + " decrypted please type [decrypt].\n\
-If you would like to stop please type [exit].")
-    #get the user input
-    enc_or_dec = input()
-    #make sure they do not want to exit
-    if(str(enc_or_dec).lower() == "exit"): 
-        program_kill()
-    #append the function the user desires to the 
-    #inputs list after i #is put through input checking.
-    inputs.append(input_check(enc_or_dec, 'function'))
-    enc_or_dec = inputs[1]
-
-    #get input 3 (Shift value)
-    if(enc_or_dec == 'encrypt'):
-        print("Please enter the shift value that your document will be encrypted with.")
-    else:
-        print("Please enter the shift value that your document was encrypted with.")
+    print("Please enter the shift value that your document was encrypted with.")
     #get user input
     shift = input()
     #make sure they do not want to exit
@@ -226,9 +224,9 @@ if __name__ == '__main__':
         inputs = get_input()
         
         #Set the 3 inputs to variables for readability
-        filename = inputs[0]
-        enc_or_dec = inputs[1]
-        shift = int(inputs[2])
+        filename = "tmp.txt"
+        enc_or_dec = "decrypt"
+        shift = inputs[0]
         
         f = open(filename, 'r+')
 
@@ -256,25 +254,3 @@ if __name__ == '__main__':
             print("Your file has been decrypted!")
         
         f.close()
-
-"""
-Debug Code
-"""
-# shift = int(input())
-# filename = "tmp.txt"
-# f = open(filename, 'r+',)
-# pre_encrypted = []
-# word_list= []
-# encrypted =[]
-# #Make a list of all lines in the file
-# for line in f:
-#     pre_encrypted.append(line)
-#     #Make a list of all characters in the document
-#     for word in line:
-#         word_list.append(word)
-# ascii_list = [ord(letter) for letter in word_list]
-# encrypted_word_list = [UPPERCASE_ALPHABET[((i - 65) + (shift % 26)) % 25] if (i >= 65 and i <=90) else UNDERCASE_ALPHABET[((i - 97) + (shift % 26)) % 25] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
-# f.seek(0)
-# f.truncate()
-# f.write(''.join(encrypted_word_list))
-# f.close()
