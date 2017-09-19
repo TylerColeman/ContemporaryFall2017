@@ -1,6 +1,5 @@
 import sys
-from random import randint
-import time
+
 """
 Tyler Coleman
 
