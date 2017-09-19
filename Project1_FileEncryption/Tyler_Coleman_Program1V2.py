@@ -1,4 +1,6 @@
 import sys
+from random import randint
+import time
 """
 Tyler Coleman
 
@@ -131,7 +133,7 @@ def input_check(user_input, type_input):
     #Shift Checker
     else:
         shift = user_input
-    #Validate that the key is within the specified range and it is an integer  
+        #Validate that the key is within the specified range and it is an integer  
         try:
             #This will ValueError if shift is not an integer
             shift = int(shift)
@@ -190,10 +192,10 @@ def encrypt_or_decrypt(char_list, shift, enc_or_dec):
        symbol that is found is not a letter it converts it to its char form.
        source for this idea: https://stackoverflow.com/questions/9987483/elif-in-list-comprehension-conditionals
     """ 
-    encrypted_char_list = [UPPERCASE_ALPHABET[(i - 65 + shift) % 26] if (i >= 65 and i <=90) else 
+    manipulated_char_list = [UPPERCASE_ALPHABET[(i - 65 + shift) % 26] if (i >= 65 and i <=90) else 
     UNDERCASE_ALPHABET[(i - 97 + shift) % 26] if (i >= 97 and i <=122) else chr(i) for i in ascii_list]
     #return the character list created by the above list comprehension statement.
-    return encrypted_char_list
+    return manipulated_char_list
 """
     @Function: program_kill
 
@@ -220,7 +222,7 @@ if __name__ == '__main__':
     in_use = True
     while(in_use):
         #Set inputs to our I/O function that will deal with getting
-        #USer inputs and validating them.
+        #User inputs and validating them.
         inputs = get_input()
         
         #Set the 3 inputs to variables for readability
@@ -228,7 +230,7 @@ if __name__ == '__main__':
         enc_or_dec = inputs[1]
         shift = int(inputs[2])
         
-        f = open(inputs[0], 'r+')
+        f = open(filename, 'r+')
 
         #This will store all chars in the document.
         char_list= []
