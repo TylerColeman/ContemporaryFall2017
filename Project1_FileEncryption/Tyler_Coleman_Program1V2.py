@@ -46,7 +46,7 @@ You can type [exit] at anytime to terminate the program.")
     #get input 2 (encrypt or decrypt)
     print("\nIf you would like " + filename + " encrypted please type [encrypt].\n\
 If you would like " + filename + " decrypted please type [decrypt].\n\
-If you would like to stop please type [exit]")
+If you would like to stop please type [exit].")
     #get the user input
     enc_or_dec = input()
     #make sure they do not want to exit
@@ -135,31 +135,33 @@ def input_check(user_input, type_input):
         try:
             #This will ValueError if shift is not an integer
             shift = int(shift)
-            if(str(shift).lower() == "exit"): program_kill()
+            if(str(shift).lower() == "exit"): 
+                program_kill()
             #The user entered a negative shift, so i take the absolute value and let them know.
             if shift < 0:
                 shift = abs(shift)
-                print("The shift value must be an integer the absolute value of any negative entry will be used.")
+                print("The shift value must be a positive integer the absolute value of any negative entry will be used.")
         except ValueError:
             print("Please enter a valid shift. The shift value must be an integer greater than 0.")
             invalid_shift = True
             #Run until we get valid input or the user enters "exit"
             while invalid_shift:
                 try:
-                    #again looking for a ValueError
-                    shift = int(input())
+                    shift = input()
                     if(str(shift).lower() == "exit"): 
                         program_kill()
+                    #again looking for a ValueError
+                    shift = int(shift)
                     #We finally got good user input
                     invalid_shift = False
                     #The user entered a negative shift, so i take the absolute value and let them know.
                     if shift < 0:
                         shift = abs(shift)
-                        print("The shift value must be an integer the absolute value of any negative entry will be used.")
+                        print("The shift value must be a positive integer the absolute value of any negative entry will be used.")
                 except ValueError:
                     print("Please enter a valid shift. The shift value must be an integer greater than 0.")
         
-        return int(shift)
+        return shift
 
 
 """
