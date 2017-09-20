@@ -210,8 +210,8 @@ def program_kill():
     print("Thank you for using the encrypter/decrypter 9000.\n")
     sys.exit()
 
-
-
+    
+    
 #Main
 if __name__ == '__main__':
     
