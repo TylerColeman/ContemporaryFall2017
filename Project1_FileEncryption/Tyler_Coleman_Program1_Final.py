@@ -240,7 +240,7 @@ def main(times_called):
             char_list.append(char)
     
     #This sets the file pointer f to the beginning
-    #of the file
+    #of the file (if it isn't already).
     f.seek(0)
     #this truncates everything after the pointer,
     #so...everything, effectively clearing out the 
