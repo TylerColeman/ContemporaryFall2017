@@ -8,14 +8,19 @@ CMPS 4143 Contemporary Programming Languages: Fall 2017
 Data Structure(s) Used: [List]
 
 Description: This program will take a user specified file and encrypt it, or
-             decrypt it depending on the user's input.
+             decrypt it depending on the user's input. The user must provide a
+             valid filename in the same directory as this program, a command:
+             [encrypt] or [decrypt], and a shift value by which the document's
+             characters will be shifted. The program will run continuously until
+             the user enters the string "exit" (Not case sensitive).
 """
 #Alphabet Tables for use in the encrypt_char_list and decrypt_char_list
-UPPERCASE_ALPHABET = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
-                      'N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+#I made the names all uppercase to show that they are constants.
+UPPERCASE_ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                      'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-UNDERCASE_ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m',
-                      'n','o','p','q','r','s','t','u','v','w','x','y','z']
+UNDERCASE_ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 """
     @Function: get_input
@@ -212,8 +217,10 @@ def program_kill():
 
 def main(times_called):
     
+    #only display the welcome on the first time use.
     if times_called == 0:
         print("\nWelcome to the document encrypter/decrypter 9000\n")
+
     #get the inputs and validate them
     inputs = get_input()
     
@@ -231,9 +238,13 @@ def main(times_called):
     for line in f:
         for char in line:
             char_list.append(char)
-    #Clear out the contents of the file so that it
-    #can be overwritten with the encrypted/decrypted version.
+    
+    #This sets the file pointer f to the beginning
+    #of the file
     f.seek(0)
+    #this truncates everything after the pointer,
+    #so...everything, effectively clearing out the 
+    #file.
     f.truncate()
 
     #User wants to encrypt the file
@@ -259,11 +270,14 @@ if __name__ == '__main__':
     
     """
         Caution! This program will overwrite the chosen file
-        with the encrypted/decrypted words.
+        with the encrypted/decrypted words. Make sure you 
+        remember the shift value so it can be decrypted!
     """
+    #First itteration of main
     i = 0
     main(i)
     i += 1
+    #Run main until the user enters "exit"
     in_use = True
     while(in_use):
         print("Press [enter] to do another...")
