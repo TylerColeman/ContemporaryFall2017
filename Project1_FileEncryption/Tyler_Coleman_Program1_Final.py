@@ -146,7 +146,7 @@ def input_check(user_input, type_input):
             #The user entered a negative shift, so i take the absolute value and let them know.
             if shift < 0:
                 shift = abs(shift)
-                print("\nThe shift value must be a positive integer the absolute value of any negative entry will be used.")
+                print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
         except ValueError:
             print("Please enter a valid shift. The shift value must be an integer greater than 0.")
             invalid_shift = True
@@ -163,7 +163,7 @@ def input_check(user_input, type_input):
                     #The user entered a negative shift, so i take the absolute value and let them know.
                     if shift < 0:
                         shift = abs(shift)
-                        print("\nThe shift value must be a positive integer the absolute value of any negative entry will be used.")
+                        print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
                 except ValueError:
                     print("Please enter a valid shift. The shift value must be an integer greater than 0.")
         
@@ -267,7 +267,7 @@ def main(times_called):
     
 #Main
 if __name__ == '__main__':
-    
+
     """
         Caution! This program will overwrite the chosen file
         with the encrypted/decrypted words. Make sure you 
@@ -280,7 +280,8 @@ if __name__ == '__main__':
     #Run main until the user enters "exit"
     in_use = True
     while(in_use):
-        print("Press [enter] to do another...")
+        print("Press [enter] to do another...\n\
+Type [exit] to end the program.")
         inp =input()
         if inp.lower() != "exit":
             main(i)
