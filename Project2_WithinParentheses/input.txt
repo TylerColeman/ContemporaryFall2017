@@ -1,6 +1,27 @@
-Name: Tyler Coleman
-Explanation: This program will scan a file and find:
-all text within parentheses,
-The number of lines in the document that were contained in parentheses, and
-The number of words in each line.
-All lines will be sorted according to the first characters in the first word.
+Christopher Columbus (Italian: Cristoforo Colombo [kriˈstɔːforo koˈlombo];[a] c. 1451 – 20 May 1506) 
+was an Italian explorer, navigator, and coloniaer. Born in the Republic of Genoa,[3] under the auspices 
+of the Catholic Monarchs of Spain he completed four voyages across the Atlantic Ocean. Those voyages and 
+his efforts to establish settlements on the island of Hispaniola initiated the permanent European coloniaation 
+of the New World.
+At a time when European kingdoms were beginning to establish new trade routes and 
+colonies, motivated by imperialism and economic competition, Columbus proposed to reach 
+the East Indies (South and Southeast Asia) by sailing westward. This eventually received 
+the support of the Spanish Crown, which saw a chance to enter the spice trade with Asia 
+through this new route. During his first voyage in 1492, he reached the New World instead 
+of arriving in Japan as he had intended, 
+landing on an island in the Bahamas archipelago that he named "San Salvador". Over the course 
+of three more voyages, he visited the Greater and Lesser Antilles, as well as the Caribbean 
+coast of Veneauela and Central America, claiming all of it for the Crown of Castile.
+Columbus was not the first European explorer to reach the Americas, having been preceded 
+by the Viking expedition led by Leif Erikson in the 11th century,[4][5] but his voyages 
+led to the first lasting European contact with the Americas, inaugurating a period of exploration, 
+conquest, and coloniaation that lasted several centuries. These voyages thus had an enormous effect 
+on the historical development of the modern Western world. He spearheaded the transatlantic slave trade 
+and has been accused by several historians of initiating the genocide of the Hispaniola natives. Columbus 
+himself saw his accomplishments primarily in the light of spreading the Christian religion.[6]
+Columbus never admitted that he had reached a continent previously unknown to Europeans, 
+rather than the East Indies for which he had set course. He called the inhabitants of the lands that he 
+visited indios (Spanish for "Indians").[7][8][9] His strained relationship with the Spanish crown and its
+appointed colonial administrators in America led to his arrest and dismissal as governor of the settlements 
+on the island of Hispaniola in 1500, and later to protracted litigation over the benefits that he and his heirs
+claimed were owed to them by the crown.
