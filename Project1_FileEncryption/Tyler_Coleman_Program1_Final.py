@@ -59,7 +59,7 @@ If you would like to stop please type [exit].")
     if(str(enc_or_dec).lower() == "exit"): 
         program_kill()
     #append the function the user desires to the 
-    #inputs list after i #is put through input checking.
+    #inputs list after it is put through input checking.
     inputs.append(input_check(enc_or_dec, 'function'))
     enc_or_dec = inputs[1]
 
@@ -135,6 +135,9 @@ def input_check(user_input, type_input):
         return enc_or_dec.lower()
 
     #Shift Checker
+    #This block ensures the user has entered
+    #first an integer value and second that it
+    #is positive.
     else:
         shift = user_input
         #Validate that the key is within the specified range and it is an integer  
@@ -148,7 +151,7 @@ def input_check(user_input, type_input):
                 shift = abs(shift)
                 print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
         except ValueError:
-            print("Please enter a valid shift. The shift value must be an integer greater than 0.")
+            print("Please enter a valid shift. The shift value must be a positive integer.")
             invalid_shift = True
             #Run until we get valid input or the user enters "exit"
             while invalid_shift:
@@ -158,14 +161,14 @@ def input_check(user_input, type_input):
                         program_kill()
                     #again looking for a ValueError
                     shift = int(shift)
-                    #We finally got good user input
+                    #We finally got an integer as input
                     invalid_shift = False
                     #The user entered a negative shift, so i take the absolute value and let them know.
                     if shift < 0:
                         shift = abs(shift)
                         print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
                 except ValueError:
-                    print("Please enter a valid shift. The shift value must be an integer greater than 0.")
+                    print("Please enter a valid shift. The shift value must be a positive integer.")
         
         return shift
 
@@ -224,8 +227,7 @@ def main(times_called):
     #get the inputs and validate them
     inputs = get_input()
     
-    #Set the 3 inputs to variables for readability
-    filename = inputs[0]
+    #Set the 3 inputs to variables for read
     enc_or_dec = inputs[1]
     shift = int(inputs[2])
     
