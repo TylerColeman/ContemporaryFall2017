@@ -27,7 +27,7 @@ UNDERCASE_ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'
 
     @Parameters: None
 
-    @Returns: A list of the 3 user inputs stored in the list (inputs)
+    @Returns: 3 user inputs stored in the list (inputs)
 
     @Description: This function promtps the user for 3 inputs
     A file name, a function(encrypt or decrypt) and the shift
@@ -65,9 +65,9 @@ If you would like to stop please type [exit].")
 
     #get input 3 (Shift value)
     if(enc_or_dec == 'encrypt'):
-        print("\nPlease enter the shift value that your document will be encrypted with.")
+        print("\nPlease enter the shift value that " +  filename + " will be encrypted with.")
     else:
-        print("\nPlease enter the shift value that your document was encrypted with.")
+        print("\nPlease enter the shift value that " +  filename + " was encrypted with.")
     #get user input
     shift = input()
     #make sure they do not want to exit
@@ -149,7 +149,8 @@ def input_check(user_input, type_input):
             #The user entered a negative shift, so i take the absolute value and let them know.
             if shift < 0:
                 shift = abs(shift)
-                print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
+                print("\n*Warning* The shift value must be a positive integer.\n\
+The absolute value of any negative entry will be used.")
         except ValueError:
             print("Please enter a valid shift. The shift value must be a positive integer.")
             invalid_shift = True
@@ -166,7 +167,8 @@ def input_check(user_input, type_input):
                     #The user entered a negative shift, so i take the absolute value and let them know.
                     if shift < 0:
                         shift = abs(shift)
-                        print("\nThe shift value must be a positive integer. The absolute value of any negative entry will be used.")
+                        print("\n*Warning* The shift value must be a positive integer.\n\
+The absolute value of any negative entry will be used.")
                 except ValueError:
                     print("Please enter a valid shift. The shift value must be a positive integer.")
         
@@ -218,16 +220,30 @@ def program_kill():
     print("\nThank you for using the encrypter/decrypter 9000.\n")
     sys.exit()
 
+"""
+    @Function: main
+
+    @Parameters: integer, the number of times main has been called.
+
+    @Returns: None
+    
+    @Description: This is the "main" function for this program.
+    
+"""
 def main(times_called):
     
     #only display the welcome on the first time use.
     if times_called == 0:
-        print("\nWelcome to the document encrypter/decrypter 9000\n")
+        print("\nWelcome to the document encrypter/decrypter 9000\n\
+This program will encrypt, or a decrypt a file of your chosing using\n\
+a certain integer value that you input. ***WARNING*** The file that you\n\
+choose will be OVERWRITTEN!\n")
 
     #get the inputs and validate them
     inputs = get_input()
     
     #Set the 3 inputs to variables for read
+    filename = inputs[0]
     enc_or_dec = inputs[1]
     shift = int(inputs[2])
     
@@ -237,6 +253,7 @@ def main(times_called):
     #This will store all chars in the document.
     char_list= []
     #Loop through every character in every line in the file
+    # and append it to the char_list
     for line in f:
         for char in line:
             char_list.append(char)
@@ -267,7 +284,7 @@ def main(times_called):
     
     f.close()
     
-#Main
+#Run Main()
 if __name__ == '__main__':
 
     """
