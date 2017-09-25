@@ -37,7 +37,7 @@ UNDERCASE_ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'
 def get_input():
     #get input 1 (file name)
     inputs = []
-    print("Please enter a file name with it's extension (then press enter).\n\
+    print("Please enter a file name with it's extension.\n\
 You can type [exit] at anytime to terminate the program.")
     #get the user input
     filename = input()
@@ -234,8 +234,8 @@ def main(times_called):
     
     #only display the welcome on the first time use.
     if times_called == 0:
-        print("\nWelcome to the document encrypter/decrypter 9000\n\
-This program will encrypt, or a decrypt a file of your chosing using\n\
+        print("\nWelcome to the document encrypter/decrypter 9000!\n\
+This program will encrypt, or decrypt a file of your chosing using\n\
 a certain integer value that you input. ***WARNING*** The file that you\n\
 choose will be OVERWRITTEN!\n")
 
@@ -272,7 +272,7 @@ choose will be OVERWRITTEN!\n")
         encrypted_list = encrypt_or_decrypt(char_list, shift, 'encrypt')
         #write the list to the file without the list format
         f.write(''.join(encrypted_list))
-        print("\nYour file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "]\n")
+        print("\nYour file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "].\n")
     
     #The user wants to decrypt the file
     else:
