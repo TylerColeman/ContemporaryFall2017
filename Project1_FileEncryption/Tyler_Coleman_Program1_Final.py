@@ -5,7 +5,7 @@ Tyler Coleman
 
 CMPS 4143 Contemporary Programming Languages: Fall 2017
 
-Data Structure(s) Used: [List]
+Data Structure(s) Used: List []
 
 Description: This program will take a user specified file and encrypt it, or
              decrypt it depending on the user's input. The user must provide a
@@ -111,6 +111,7 @@ def input_check(user_input, type_input):
             while invalid_filename:
                 try:
                     filename = input()
+                    #make sure they do not want to exit
                     if(str(filename).lower() == "exit"): 
                         program_kill()
                     f = open(filename, 'r',)
@@ -130,17 +131,19 @@ def input_check(user_input, type_input):
         while enc_or_dec.lower() != "encrypt" and enc_or_dec.lower() != "decrypt":
             print("Please enter a valid function: [encrypt] or [decrypt]")
             enc_or_dec = input()
+            #make sure they do not want to exit
             if(str(enc_or_dec).lower() == "exit"): 
                 program_kill()
+        #return the function they wish to run on the document
         return enc_or_dec.lower()
 
     #Shift Checker
     #This block ensures the user has entered
-    #first an integer value and second that it
+    #first: an integer value and second: that it
     #is positive.
     else:
         shift = user_input
-        #Validate that the key is within the specified range and it is an integer  
+        #Validate that the key is an integer  
         try:
             #This will ValueError if shift is not an integer
             shift = int(shift)
@@ -242,7 +245,7 @@ choose will be OVERWRITTEN!\n")
     #get the inputs and validate them
     inputs = get_input()
     
-    #Set the 3 inputs to variables for read
+    #Set the 3 inputs to variables for readability
     filename = inputs[0]
     enc_or_dec = inputs[1]
     shift = int(inputs[2])
@@ -301,10 +304,12 @@ if __name__ == '__main__':
     while(in_use):
         print("Press [enter] to do another...\n\
 Type [exit] to end the program.")
-        inp =input()
+        inp = input()
+        #keep going
         if inp.lower() != "exit":
             main(i)
             i += 1
+        #user is finished
         else:
             in_use = False
             print("\nThank you for using the encrypter/decrypter 9000.\n")
