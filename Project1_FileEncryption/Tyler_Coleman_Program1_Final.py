@@ -275,7 +275,7 @@ choose will be OVERWRITTEN!\n")
         encrypted_list = encrypt_or_decrypt(char_list, shift, 'encrypt')
         #write the list to the file without the list format
         f.write(''.join(encrypted_list))
-        print("\nYour file has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "].\n")
+        print("\n" + filename + " has been encrypted!\nDon't forget, your decryption key is [" + str(shift) + "].\n")
     
     #The user wants to decrypt the file
     else:
@@ -283,7 +283,7 @@ choose will be OVERWRITTEN!\n")
         decrypted_list = encrypt_or_decrypt(char_list, shift, 'decrypt')
         #write the list to the file without the list format
         f.write(''.join(decrypted_list))
-        print("\nYour file has been decrypted!\n")
+        print("\n" + filename + " has been decrypted!\n")
     
     f.close()
     
