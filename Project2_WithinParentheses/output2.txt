@@ -1,0 +1,32 @@
+Name: Tyler Coleman
+Explanation: This program will scan a file and find:
+all text within parentheses,
+The number of lines in the document that were contained in parentheses, and
+The number of words in each line.
+All lines will be sorted according to the first characters in the first word.
+
+though she very seldom followed it
+she might well say this
+as she had hoped
+a loud crash
+it was exactly three inches high
+In which the cook and the baby joined
+it had left off sneezing by this time
+pointing with his teaspoon to the March Hare
+We know it to be true
+Before she had this fit
+she knew
+want to stay
+minute or two to
+just as she had
+send the hedgehog to
+or are legally required to prepare
+if any
+a
+b
+c
+c
+3
+c
+3
+801
