@@ -13,13 +13,28 @@ All lines will be sorted according to the first characters in the first word.\n\
 
 def main():
     filename = "alice.txt"
-    with open(filename) as inf:
+    y = []
+    with open(filename) as inf, open("output2.txt", 'w') as outf:
         data = inf.read()
-        x = re.findall('\((.*)\)', data)
-    f = open("output2.txt", 'w')
-    new_x = ['{0}\n'.format(i) for i in x]
-    header(f)
-    f.write(''.join(new_x))
+        x = re.findall('\((.+?[\s\S]*?)\)', data)
+        for line in x:
+            y.append(' '.join(line.splitlines()))
+        newest_x = []
+        for item in y:
+            count = 1
+            found = False
+            for i in range(len(item)):
+                if found:
+                    continue
+                if (ord(item[i]) < 65 or ord(item[i]) > 90) and (ord(item[i]) < 97 or ord(item[i]) > 122):
+                    found = True
+            item2 = item + '\t' + str(count)
+            newest_x.append(item2)
+        new_x = ['{0}\n'.format(i) for i in newest_x]
+        header(outf)
+        outf.write(''.join(new_x))
+        lines = len(new_x)
+        outf.write(str(lines))
 
 if __name__ == '__main__':
     main()
