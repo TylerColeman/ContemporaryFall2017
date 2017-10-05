@@ -1,4 +1,38 @@
 from re import *
+import math
+"""
+    Intro: basic python syntax Problems
+"""
+#EX1
+def grade():
+    num_grade = int(input("Please enter a numeric grade between 0 and 100.\n"))
+    if num_grade >= 90: print('A')
+    elif num_grade >= 80: print('B')
+    elif num_grade >= 70: print('C')
+    elif num_grade >= 60: print('D')
+    else: print('F')
+
+#EX2
+def converter_ft_in(val, typeof, typeto):
+    if typeof.lower() == 'feet' and typeto.lower() == 'inches':
+        return val * 12
+    elif typeof.lower() == 'inches' and typeto.lower() == 'feet':
+        return val / 12
+    else:
+        return val
+
+#EX3
+def qudratic_solutions(CoeffA, CoeffB, CoeffC):
+    discriminant = CoeffB**2 - (4 * CoeffA * CoeffC)
+    if discriminant >= 0:
+        val1 = (-CoeffB + math.sqrt(discriminant)) / (2 * CoeffA)
+        val2 = (-CoeffB - math.sqrt(discriminant)) / (2 * CoeffA)
+        if abs(val1 - val2) == 0:
+            print(val1)
+        else:
+            print(str(val1), ' ', str(val2))
+    else:
+        print("No real solutions.")
 """
     Python Files, strings, lists, dictionaries
 """
@@ -39,4 +73,4 @@ def pyth_re():
         data = inf.read()
         ex1(data)
 
-pyth_re()
+qudratic_solutions(1, 10, 5)
