@@ -1,0 +1,58 @@
+Programming Language Defn:
+    systematic notation by which we describe computational processes to others
+    notation for description of algorithms and data structures.
+
+John von Neumann: 
+    proposed that computers should be permanently hardwired with a small set of general-purpose operations
+    Would allow the operator to input a series of binary codes to organize the basic hardware operations to solve more specific problems
+    Operators could flip switches to enter these codes, called machine language, into memory.
+
+Machine Language:
+    Each line of code has 16 bits or binary digits
+    Represents either a single machine language instruction or a single data value
+    Program execution begins with the first line of code
+    Code is fetched from memory, decoded (interpreted), and executed
+    Control then moves to the next line of code and continues until a halt instruction is reached
+    Opcode: the first 4 bits of a line of code
+    Indicates the type of operation to be performed
+
+Assembly Language:
+    a set of mnemonic symbols for instruction codes and memory locations
+    Example: LD R1, FIRST
+    Assembler: a program that translates the symbolic assembly language code to binary machine code
+    Loader: a program that loads the machine code into computer memory
+    Input devices: Keypunch machine, Card reader
+    Assembly languages first appeared in the 1950s and are still used today for low-level system tools or for hand-optimization
+
+High Level Language:
+    A high-level language (HLL) is a programming language such as C, FORTRAN, or Pascal that 
+    enables a programmer to write programs that are more or less independent of a particular 
+    type of computer. Such languages are considered high-level because they are closer to 
+    human languages and further from machine languages.
+    
+Fortran:
+    FORmula TRANslation language
+    Developed by John Backus in the early 1950s
+    Reflected the architecture of a particular type of machine
+    Lacked the structured control statements and data structures of later high-level languages
+    Popular with scientists and engineers for its support for algebraic notation and floating-point numbers
+
+ALGOL:
+    ALGOrithmic Language released in 1960
+    Provided a standard notation for computer scientists to publish algorithms in journals
+    Included structured control statements for sequencing (begin-end blocks), loops (for loop), and selection (if and if-else statements)
+    Supported different numeric types
+    Introduced the array structure
+    Supported procedures, including recursive procedures
+    ALGOL achieved machine independence with the requirement for an ALGOL compiler with each type of hardware
+    ALGOL was the first language to receive a formal specification or definition
+    Included a grammar that defined its features for both programmers and for compiler writers
+
+Compiler: 
+    translates programming language statements into machine code
+
+Ada:
+    High level programming language for embedded apps for US department of defense.
+
+Pascal:
+    High level language for teaching programming.
