@@ -33,6 +33,43 @@ def qudratic_solutions(CoeffA, CoeffB, CoeffC):
             print(str(val1), ' ', str(val2))
     else:
         print("No real solutions.")
+
+"""
+    Python: Functions, loops, and recursion
+"""
+#EX1 Brute Force
+def perf_num(num):
+    summ = 0
+    for i in range(1,num):
+        if num % i == 0:
+            summ += i
+    if summ == num:
+        print("Perfect")
+    elif summ > num:
+        print("abundant")
+    else:
+        print("Deficient")
+
+#EX2
+def perf_num2(num):
+    summ = 0
+    for i in range(1,num):
+        if num % i == 0:
+            summ += i
+    if summ == num:
+        return('p')
+    elif summ > num:
+        return('a')
+    else:
+        return('d')
+
+#EX2
+def base10_to_base2(num):
+    if num == 1:
+        print(1)
+    else:
+        print(num % 2)
+        base10_to_base2(num // 2)
 """
     Python Files, strings, lists, dictionaries
 """
@@ -73,4 +110,5 @@ def pyth_re():
         data = inf.read()
         ex1(data)
 
-qudratic_solutions(1, 10, 5)
+
+
