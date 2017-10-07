@@ -112,3 +112,9 @@ def pyth_re():
 
 
 
+fruit = 'banana'
+i = fruit.find('a')
+print(i)
+x = [1, 2, 3]
+del x[1]
+print (x)

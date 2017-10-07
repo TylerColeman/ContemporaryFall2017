@@ -5,83 +5,70 @@ The number of lines in the document that were contained in parentheses, and
 The number of words in each line.
 All lines will be sorted according to the first characters in the first word.
 
-This file was produced from images generously made available by the University of Florida Digital Collections.	17
-as well as she could, for the hot day made her feel very sleepy and stupid	17
-when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural	29
-Which was very likely true.	6
-for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a _very_ good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over	56
-Alice had no idea what Latitude was, or Longitude either, but thought they were nice grand words to say.	22
-she was rather glad there _was_ no one listening, this time, as it didn't sound at all the right word	25
-and she tried to curtsey as she spoke--fancy _curtseying_ as you're falling through the air! Do you think you could manage it?	29
-Dinah was the cat.	5
-"which certainly was not here before," said Alice,	12
-it had, in fact, a sort of mixed flavour of cherry-tart, custard, pineapple, roast turkey, coffee, and hot buttered toast,	29
+as well as she could, for the hot day made her feel very sleepy and stupid	16
+when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural	27
+Which was very likely true.	5
+for, you see, Alice had learnt several things of this sort in her lessons in the schoolroom, and though this was not a VERY good opportunity for showing off her knowledge, as there was no one to listen to her, still it was good practice to say it over	49
+Alice had no idea what Latitude was, or Longitude either, but thought they were nice grand words to say.	19
+she was rather glad there WAS no one listening, this time, as it didn't sound at all the right word	21
+and she tried to curtsey as she spoke--fancy CURTSEYING as you're falling through the air! Do you think you could manage it?	24
+Dinah was the cat.	4
+'which certainly was not here before,' said Alice,	8
+it had, in fact, a sort of mixed flavour of cherry-tart, custard, pine-apple, roast turkey, toffee, and hot buttered toast,	22
 though she very seldom followed it	6
-she was so much surprised, that for a moment she quite forgot how to speak good English	18
-for when she looked down at her feet, they seemed to be almost out of sight, they were getting so far off	24
-with Alice's love	4
+she was so much surprised, that for the moment she quite forgot how to speak good English	17
+for when she looked down at her feet, they seemed to be almost out of sight, they were getting so far off	22
+WITH ALICE'S LOVE	4
 she might well say this	5
-Alice had been to the seaside once in her life, and had come to the general conclusion, that wherever you go to on the English coast you find a number of bathing machines in the sea, some children digging in the sand with wooden spades, then a row of lodging houses, and behind them a railway station.	63
-Alice thought this must be the right way of speaking to a mouse; she had never done such a thing before, but she remembered having seen in her brother's Latin Grammar, "A mouse--of a mouse--to a mouse--a mouse--O mouse!"	54
-For, with all her knowledge of history, Alice had no very clear notion how long ago anything had happened.	22
-with passion, Alice thought	5
-And, as you might like to try the thing yourself some winter day, I will tell you how the Dodo managed it.	25
-"the exact shape doesn't matter," it said,	12
-the position in which you usually see Shakespeare, in the pictures of him	14
+Alice had been to the seaside once in her life, and had come to the general conclusion, that wherever you go to on the English coast you find a number of bathing machines in the sea, some children digging in the sand with wooden spades, then a row of lodging houses, and behind them a railway station.	57
+Alice thought this must be the right way of speaking to a mouse: she had never done such a thing before, but she remembered having seen in her brother's Latin Grammar, 'A mouse--of a mouse--to a mouse--a mouse--O mouse!'	44
+For, with all her knowledge of history, Alice had no very clear notion how long ago anything had happened.	19
+with passion, Alice thought	4
+And, as you might like to try the thing yourself, some winter day, I will tell you how the Dodo managed it.	22
+'the exact shape doesn't matter,' it said,	8
+the position in which you usually see Shakespeare, in the pictures of him	13
 luckily the salt water had not got into it	9
 as she had hoped	4
-Sounds of more broken glass.	6
-He pronounced it "arrum."	7
+Sounds of more broken glass.	5
+He pronounced it 'arrum.'	4
 a loud crash	3
 she couldn't guess of what sort it was	9
-"That's Bill," thought Alice,	9
+'That's Bill,' thought Alice,	5
 it was exactly three inches high	6
-she considered him to be a footman because he was in livery: otherwise, judging by his face only, she would have called him a fish	28
+she considered him to be a footman because he was in livery: otherwise, judging by his face only, she would have called him a fish	25
 In which the cook and the baby joined	8
-which was to twist it up into a knot, and then keep tight hold of its right ear and left foot, so as to prevent its undoing itself,	31
+which was to twist it up into a sort of knot, and then keep tight hold of its right ear and left foot, so as to prevent its undoing itself,	30
 it had left off sneezing by this time	8
-or grunted, it was impossible to say which	9
-"I only wish it was," the March Hare said to itself in a whisper.	18
-pointing with his teaspoon to the March Hare	8
+or grunted, it was impossible to say which	8
+'I only wish it was,' the March Hare said to itself in a whisper.	14
+pointing with his tea spoon at the March Hare,	9
 she had kept a piece of it in her pocket	10
-It was this last remark that had made the whole party look so grave and anxious.	17
+It was this last remark that had made the whole party look so grave and anxious.	16
 not in a very hopeful tone though	7
-If you don't know what a Gryphon is, look at the picture.	15
-"I haven't," said Alice	8
-Alice began to say "I once tasted----" but checked herself hastily, and said "No, never"	25
-she was obliged to say "creatures," you see, because some of them were animals, and some were birds,	24
-it was Bill, the Lizard	6
-As that is rather a hard word, I will just explain to you how it was done. They had a large canvas bag, which tied up at the mouth with strings: into this they slipped the guinea-pig, head first, and then sat upon it.	52
-The jury all looked puzzled.	6
-The jury all brightened up again.	7
+IF you don't know what a Gryphon is, look at the picture.	13
+'I haven't,' said Alice	5
+Alice began to say 'I once tasted--' but checked herself hastily, and said 'No, never'	15
+look at the frontispiece if you want to see how he did it,	13
+she was obliged to say 'creatures,' you see, because some of them were animals, and some were birds,	18
+it was Bill, the Lizard	5
+As that is rather a hard word, I will just explain to you how it was done. They had a large canvas bag, which tied up at the mouth with strings: into this they slipped the guinea-pig, head first, and then sat upon it.	45
+The jury all looked puzzled.	5
+The jury all brightened up again.	6
 We know it to be true	6
 Before she had this fit	5
-she had grown so large in the last few minutes that she wasn't a bit afraid of interrupting him,	21
-Which he certainly did _not_, being made entirely of cardboard.	14
-The unfortunate little Bill had left off writing on his slate with one finger, as he found it made no mark; but he now hastily began again, using the ink, that was trickling down his face, as long as it lasted.	47
-she had grown to her full size by this time	10
+she had grown so large in the last few minutes that she wasn't a bit afraid of interrupting him,	20
+Which he certainly did NOT, being made entirely of cardboard.	10
+The unfortunate little Bill had left off writing on his slate with one finger, as he found it made no mark; but he now hastily began again, using the ink, that was trickling down his face, as long as it lasted.	41
+she had grown to her full size by this time.	10
 she knew	2
-doorway; "and even if	6
-And she's such a	5
-I'm quite tired of	5
-arm, yer honour.	5
-want to stay	3
-to-morrow----"	7
-cat," said the Duchess	6
-minute or two to	4
-just as she had	4
-send the hedgehog to	4
-"No, never"	5
-What's in it?	5
-This file was produced from images generously made available by the University of Florida Digital Collections.	17
-and you!	3
-or any other work associated in any way with the phrase "Project Gutenberg"	15
-available with this file or online at http://gutenberg.net/license	13
+and you!	2
+or any other work associated in any way with the phrase "Project Gutenberg"	13
+available with this file or online at http://gutenberg.org/license	11
 trademark/copyright	2
-"the Foundation" or PGLAF	6
-any work on which the phrase "Project Gutenberg" appears, or with which the phrase "Project Gutenberg" is associated	23
+"the Foundation" or PGLAF	4
+any work on which the phrase "Project Gutenberg" appears, or with which the phrase "Project Gutenberg" is associated	18
 does not contain a notice indicating that it is posted with permission of the copyright holder	16
-www.gutenberg.net	3
+www.gutenberg.org	3
 or are legally required to prepare	6
 or by e-mail	4
 if any	2
@@ -89,9 +76,10 @@ a	1
 b	1
 c	1
 c	1
-3	2
+3	1
 c	1
-3	2
-801	4
-$1 to $5,000	11
-89
+3	1
+801	1
+$1 to $5,000	4
+
+76
