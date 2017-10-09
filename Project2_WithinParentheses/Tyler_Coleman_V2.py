@@ -8,7 +8,7 @@ Data Structure(s) Used: List [], strings
 
 Description: This program will take a user specified file and and find
              all sets of words/numbers contained in prentheses and the 
-             number of words in each set. Finally at the bottomr of the
+             number of words in each set. Finally at the bottom of the
              output file, it will display the number of sets that were found
 """
 
@@ -29,6 +29,10 @@ All lines will be sorted according to the first characters in the first word.\n\
     file.write("%s" % head)
 
 
+"""
+    MAIN
+"""
+
 def main():
     filename = "alice.txt"
     lines_in_parenth = []
@@ -40,7 +44,8 @@ def main():
         contained_in_parenth = re.findall('\((.+?[\s\S]*?)\)', data)
         #Get the number of items that were contained in parenthesis
         num_lines = len(contained_in_parenth)
-
+        #sort the list of items 
+        contained_in_parenth.sort(key=str.lower)
         #for each item that was contained in prenthesis
         #1:Get the number of words in that line using regular expression
         #2:get the items into string format
@@ -50,6 +55,7 @@ def main():
             count = len(re.findall('\w+', line))
             lines_in_parenth.append(' '.join(line.splitlines()))
             lines_in_parenth.append('\t' + str(count) + '\n')
+        
         
         #write the header to the outfile
         header(outf)
