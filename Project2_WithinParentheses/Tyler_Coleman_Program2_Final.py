@@ -8,7 +8,7 @@ Data Structure(s) Used: List [], strings
 
 Description: This program will take a user specified file and and find
              all sets of words/numbers contained in prentheses and the 
-             number of words in each set. Finally at the bottom of the
+             number of words/numbers in each set. Finally at the bottom of the
              output file, it will display the number of sets that were found
 """
 
@@ -28,15 +28,13 @@ All text within parentheses, The number of lines\nin the document\
  All lines will\nbe sorted according to the first characters in the first word.\n\n"
     file.write("%s" % head)
 
-
 """
     MAIN
 """
-
 def main():
-    filename = "Alice2.txt"
+    filename = "alice.txt"
     lines_in_parenth = []
-    #open inputfilename for reading and open a file to write results to.
+    #open input filename for reading and open a file to write results to.
     with open(filename) as inf, open("Coleman_alice_out.txt", 'w') as outf:
         #get the contents of the file into one large string
         data = inf.read()
@@ -46,16 +44,30 @@ def main():
         num_lines = len(contained_in_parenth)
         #sort the list of items 
         contained_in_parenth.sort(key=str.lower)
+
+        #Get the number of words in each line after removing
+        #commas and hyphens to allow regex to accurately count words
+        tmp = []
+        counts = []
+        for i in contained_in_parenth:
+            #removes commas and hyphens
+            i = i.replace(",", "").replace("-", "")
+            tmp.append(i)
+        for i in tmp:
+            #returns the number of words found in the item i
+            counts.append(len(re.findall('\w+', i)))
         #for each item that was contained in prenthesis
-        #1:Get the number of words in that line using regular expression
-        #2:get the items into string format
-        #3:append all lines with the number of words in the line 
-        # and then append a newline so they print out nicely
+        #1:get the items into string format
+        #2:append all lines with the number of words in the line 
+        #then append a newline so they print out nicely
+        index = 0
         for line in contained_in_parenth:
-            count = len(re.findall('\w+', line))
+            #this joins each element into a string with no new lines
+            #and appends it 
             lines_in_parenth.append(' '.join(line.splitlines()))
-            lines_in_parenth.append('\t' + str(count) + '\n')
-        
+            lines_in_parenth.append('\t' + str(counts[index]) + '\n')
+            if index < len(contained_in_parenth):
+                index += 1
         
         #write the header to the outfile
         header(outf)
