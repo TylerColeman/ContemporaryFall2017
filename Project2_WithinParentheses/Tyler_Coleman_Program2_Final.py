@@ -50,12 +50,13 @@ def main():
         tmp = []
         counts = []
         for i in contained_in_parenth:
-            #removes commas and hyphens
-            i = i.replace(",", "").replace("-", "")
+            #removes commas and hyphens and single quotes
+            i = i.replace(",", "").replace("-", "").replace("'", "")
             tmp.append(i)
         for i in tmp:
             #returns the number of words found in the item i
             counts.append(len(re.findall('\w+', i)))
+
         #for each item that was contained in prenthesis
         #1:get the items into string format
         #2:append all lines with the number of words in the line 
@@ -65,8 +66,10 @@ def main():
             #this joins each element into a string with no new lines
             #and appends it 
             lines_in_parenth.append(' '.join(line.splitlines()))
+            #append the word count
             lines_in_parenth.append('\t' + str(counts[index]) + '\n')
-            if index < len(contained_in_parenth):
+            #assure we do not go out of bounds
+            if index < len(counts):
                 index += 1
         
         #write the header to the outfile
