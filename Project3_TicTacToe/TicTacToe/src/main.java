@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
-public class main {
-	public static void main(String[] args) {
+public class main 
+{
+	public static void main(String[] args) 
+	{
 		//scanner for input
 		Scanner playerInput = new Scanner(System.in);
 		//make a new gameboard
@@ -12,55 +14,70 @@ public class main {
 		int input1, input2;
 		
 		game = true;
-		while(game) {
+		while(game) 
+		{
 			//header message
 			System.out.println("Tyler Coleman");
-			System.out.println("Tyler Coleman");
-			System.out.println("Tyler Coleman");
-			System.out.println("Tyler Coleman");
+			System.out.println("CMPS 4143 Contemporary Programming Languages: Fall 2017");
+			System.out.println("This is a simple game of TicTacToe between 2 players.");
+			System.out.println("The first player to get 3 X's or O's in a row/column/diagonal wins!");
 			
+			//welcome message
 			System.out.println("Welcome to TicTacToe!");
 			System.out.println("Player 1 is X's and player 2 is O's.");
 			System.out.println("To make a move just enter 2 integers between 1 and 3 (inclusive) seperated by a space.");
+			
 			//start a match
 			victory = false;
 			player1Turn = true;
-			while(!victory) {
+			while(!victory) 
+			{
 				//player1's turn
 				ticTacToe.printBoard();
-				if(player1Turn) {
+				if(player1Turn) 
+				{
 					System.out.println("It is player 1's turn! Please make your move.");
 					validMove = false;
-					while(!validMove){
+					//player 1 goes until they enter a valid move
+					while(!validMove)
+					{
 						input1 = playerInput.nextInt();
 						input2 = playerInput.nextInt();
-						if(ticTacToe.makeMove(input1, input2, 'X')) {
+						if(ticTacToe.makeMove(input1, input2, 'X')) 
+						{
 							System.out.println("Valid Move!");
 							validMove = true;
 						}
-						else {
+						else 
+						{
 							System.out.println("Invalid Move! Try again!");
 							ticTacToe.printBoard();
 						}
 					}
 					player1Turn = false;
 				}
-				else {
+				//player 2's turn
+				else 
+				{
 					System.out.println("It is player 2's turn! Please make your move.");
 					validMove = false;
-					while(!validMove){
-						
+					//player 2 goes until they enter a valid move
+					while(!validMove)
+					{
 						input1 = playerInput.nextInt();
 						input2 = playerInput.nextInt();
-						if(ticTacToe.makeMove(input1, input2, 'O')) {
+						if(ticTacToe.makeMove(input1, input2, 'O')) 
+						{
 							System.out.println("Valid Move!");
 							validMove = true;
 						}
-						else {
+						else 
+						{
 							System.out.println("Invalid Move! Try again!");
 							ticTacToe.printBoard();
 						}
 					}
+					//change turns
 					player1Turn = true;
 				}
 			}

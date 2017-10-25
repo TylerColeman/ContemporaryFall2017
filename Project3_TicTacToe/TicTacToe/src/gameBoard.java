@@ -1,29 +1,27 @@
 
-public class gameBoard {
+public class gameBoard 
+{
 	//private vars
 	private char[][] board;
 	private int boardSize = 5;
 	private int trueSize = 3;
 	
 	//default constructor
-	gameBoard(){
+	gameBoard()
+	{
 		//make a new 2D array 5x5
 		board = new char[boardSize][boardSize];
-		
-		for(int i = 0; i < boardSize; i++) {
-			for(int j = 0; j < boardSize; j++) {
+		//create the board
+		for(int i = 0; i < boardSize; i++) 
+		{
+			for(int j = 0; j < boardSize; j++) 
+			{
 				if(i % 2 == 0)
 				{
-					if(j % 2 == 0) {
-						board[i][j] = '*';
-					}
-					else {
-						board[i][j] = '|';
-					}
+					if(j % 2 == 0) { board[i][j] = '*'; }
+					else { board[i][j] = '|'; }
 				}
-				else {
-					board[i][j] = '-';
-				}
+				else { board[i][j] = '-'; }
 
 			}
 		}
@@ -35,26 +33,26 @@ public class gameBoard {
 	 * @Description:
 	 * 
 	 */
-	boolean makeMove(int i, int j, char value) {
-		if(i > trueSize || j > trueSize || i < 1 || j < 1) {
-			return false;
-			}
-		else {
+	public boolean makeMove(int i, int j, char value) 
+	{
+		if(i > trueSize || j > trueSize || i < 1 || j < 1) { return false; }
+		else 
+		{
+			//set row to the proper offset
 			if(i == 1) {i = 0;}
 			else if(i == 3) {i = 4;}
+			//set column to the proper offset
 			if(j == 1) {j = 0;}
 			else if(j == 3) {j = 4;}
-			if(board[i][j] == '*') {
+			//if the chosen spot is not already taken then set it
+			if(board[i][j] == '*') 
+			{
 				board[i][j] = value;
 				return true;
 			}
-			else {
-				return false;
-			}
-			
-			
+			//it was already taken
+			else { return false; }
 		}
-		
 	}
 	/*
 	 * @Method:
@@ -63,9 +61,10 @@ public class gameBoard {
 	 * @Description:
 	 * 
 	 */
-	boolean check() {
+	public boolean winCondition() 
+	{
 		int xCount;
-		int yCount;
+		int oCount;
 		return true;
 	}
 	/*
@@ -75,9 +74,33 @@ public class gameBoard {
 	 * @Description:
 	 * 
 	 */
-	void printBoard() {
-		for(int i = 0; i < boardSize; i++) {
-			for(int j = 0; j < boardSize;j++) {
+	public void boardReset() 
+	{
+		for(int i = 0; i < boardSize; i++) 
+		{
+			for(int j = 0; j < boardSize; j++) 
+			{
+				//only even numbered indices of the board need to be reset to stars
+				if(i % 2 == 0) 
+				{ 
+					if(j % 2 == 0) { board[i][j] = '*'; } 
+				}
+			}
+		}
+	}
+	/*
+	 * @Method:
+	 * @Parameters:
+	 * @Returns:
+	 * @Description:
+	 * 
+	 */
+	public void printBoard() 
+	{
+		for(int i = 0; i < boardSize; i++) 
+		{
+			for(int j = 0; j < boardSize;j++) 
+			{
 				System.out.print(board[i][j]);
 				System.out.print(' ');
 			}
