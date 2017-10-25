@@ -5,10 +5,11 @@ public class gameBoard
 	private char[][] board;
 	private int boardSize = 5;
 	private int trueSize = 3;
-	
+	private int moves;
 	//default constructor
 	gameBoard()
 	{
+		moves = 0;
 		//make a new 2D array 5x5
 		board = new char[boardSize][boardSize];
 		//create the board
@@ -48,6 +49,7 @@ public class gameBoard
 			if(board[i][j] == '*') 
 			{
 				board[i][j] = value;
+				moves++;
 				return true;
 			}
 			//it was already taken
@@ -63,9 +65,40 @@ public class gameBoard
 	 */
 	public boolean winCondition() 
 	{
-		int xCount;
-		int oCount;
-		return true;
+		if(moves < 3) { return false; }
+		else
+		{
+			//row check
+			for(int i = 0; i < boardSize; i+=2)
+			{
+				if(board[i][0] != '*' && board[i][0] == board[i][2] && board[i][2] == board[i][4]) { return true; }
+			}
+			//col check
+			for(int j = 0; j < boardSize; j+=2)
+			{
+				if(board[0][j] != '*' && board[0][j] == board[2][j] && board[2][j] == board[4][j]) { return true; }
+			}
+			int k = 0;
+			//check first diagonal
+			if(board[k][k] != '*' && board[k][k] == board[k+2][k+2] && board[k+2][k+2] == board[k+4][k+4]) { return true; }
+			//check second diagonal
+			if(board[k+4][k] != '*' && board[k+4][k] == board[k+2][k+2] && board[k+2][k+2] == board[k][k+4]) { return true; }
+			
+			//no win
+			return false;
+		}
+	}
+	/*
+	 * @Method:
+	 * @Parameters:
+	 * @Returns:
+	 * @Description:
+	 * 
+	 */
+	public boolean tieCondition() 
+	{
+		if(moves == 9 && !winCondition()) { return true; }
+		else { return false; }
 	}
 	/*
 	 * @Method:
@@ -76,6 +109,7 @@ public class gameBoard
 	 */
 	public void boardReset() 
 	{
+		moves = 0;
 		for(int i = 0; i < boardSize; i++) 
 		{
 			for(int j = 0; j < boardSize; j++) 

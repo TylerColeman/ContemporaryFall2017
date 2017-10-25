@@ -9,7 +9,7 @@ public class main
 		//make a new gameboard
 		gameBoard ticTacToe = new gameBoard();
 		//bools
-		boolean game, victory, player1Turn, validMove;
+		boolean game, victory, tie, player1Turn, validMove;
 		//player input coordinates
 		int input1, input2;
 		
@@ -20,17 +20,18 @@ public class main
 			System.out.println("Tyler Coleman");
 			System.out.println("CMPS 4143 Contemporary Programming Languages: Fall 2017");
 			System.out.println("This is a simple game of TicTacToe between 2 players.");
-			System.out.println("The first player to get 3 X's or O's in a row/column/diagonal wins!");
+			System.out.println("The first player to get 3 X's or O's in a row/column/diagonal wins!\n");
 			
 			//welcome message
 			System.out.println("Welcome to TicTacToe!");
 			System.out.println("Player 1 is X's and player 2 is O's.");
-			System.out.println("To make a move just enter 2 integers between 1 and 3 (inclusive) seperated by a space.");
+			System.out.println("To make a move just enter 2 integers between 1 and 3 (inclusive) seperated by a space.\n");
 			
 			//start a match
 			victory = false;
+			tie = false;
 			player1Turn = true;
-			while(!victory) 
+			while(!victory && !tie) 
 			{
 				//player1's turn
 				ticTacToe.printBoard();
@@ -47,6 +48,8 @@ public class main
 						{
 							System.out.println("Valid Move!");
 							validMove = true;
+							if(ticTacToe.winCondition()) { victory = true; }
+							else if(ticTacToe.tieCondition()) { tie = true; }
 						}
 						else 
 						{
@@ -70,6 +73,8 @@ public class main
 						{
 							System.out.println("Valid Move!");
 							validMove = true;
+							if(ticTacToe.winCondition()) { victory = true; }
+							else if(ticTacToe.tieCondition()) { tie = true; }
 						}
 						else 
 						{
@@ -81,6 +86,28 @@ public class main
 					player1Turn = true;
 				}
 			}
+			ticTacToe.printBoard();
+			//tie game
+			if(tie)
+			{
+				System.out.println("Tie game!");
+			}
+			//there is a winner
+			else
+			{
+				//player1 made the final move
+				if(!player1Turn)
+				{
+					System.out.println("Player 1 wins!");
+				}
+				//player2 made the final move
+				else
+				{
+					System.out.println("Player 2 wins!");
+				}
+			}
+			game = false;
+
 		}
 	}
 
