@@ -4,6 +4,14 @@ public class main
 {
 	public static void main(String[] args) 
 	{
+		//header message
+		System.out.println("Tyler Coleman");
+		System.out.println("CMPS 4143 Contemporary Programming Languages: Fall 2017");
+		System.out.println("This is a simple game of TicTacToe between 2 players.");
+		System.out.println("The first player to get 3 X's or O's in a row/column/diagonal wins!\n");
+		//welcome message
+		System.out.println("\nWelcome to TicTacToe!");
+		
 		//scanner for input
 		Scanner playerInput = new Scanner(System.in);
 		//make a new gameboard
@@ -16,14 +24,6 @@ public class main
 		game = true;
 		while(game) 
 		{
-			//header message
-			System.out.println("Tyler Coleman");
-			System.out.println("CMPS 4143 Contemporary Programming Languages: Fall 2017");
-			System.out.println("This is a simple game of TicTacToe between 2 players.");
-			System.out.println("The first player to get 3 X's or O's in a row/column/diagonal wins!\n");
-			
-			//welcome message
-			System.out.println("Welcome to TicTacToe!");
 			System.out.println("Player 1 is X's and player 2 is O's.");
 			System.out.println("To make a move just enter 2 integers between 1 and 3 (inclusive) seperated by a space.\n");
 			
@@ -46,7 +46,6 @@ public class main
 						input2 = playerInput.nextInt();
 						if(ticTacToe.makeMove(input1, input2, 'X')) 
 						{
-							System.out.println("Valid Move!");
 							validMove = true;
 							if(ticTacToe.winCondition()) { victory = true; }
 							else if(ticTacToe.tieCondition()) { tie = true; }
@@ -71,7 +70,6 @@ public class main
 						input2 = playerInput.nextInt();
 						if(ticTacToe.makeMove(input1, input2, 'O')) 
 						{
-							System.out.println("Valid Move!");
 							validMove = true;
 							if(ticTacToe.winCondition()) { victory = true; }
 							else if(ticTacToe.tieCondition()) { tie = true; }
@@ -106,9 +104,13 @@ public class main
 					System.out.println("Player 2 wins!");
 				}
 			}
-			game = false;
-
+			ticTacToe.boardReset();
+			String cont;
+			System.out.println("Would you like to play again? Type [q] if you would like to quit.");
+			cont = playerInput.next();
+			if(cont == "q") { game = false; } 
 		}
+		System.out.println("Thank you for playing TicTacToe!");
 	}
 
 
