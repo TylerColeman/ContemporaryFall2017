@@ -1,11 +1,12 @@
-
+/*
+ * */
 public class gameBoard 
 {
 	//private vars
 	private char[][] board;
-	private int boardSize = 5;
-	private int trueSize = 3;
+	private int boardSize = 3;
 	private int moves;
+	
 	//default constructor
 	gameBoard()
 	{
@@ -15,36 +16,27 @@ public class gameBoard
 		//create the board
 		for(int i = 0; i < boardSize; i++) 
 		{
-			for(int j = 0; j < boardSize; j++) 
-			{
-				if(i % 2 == 0)
-				{
-					if(j % 2 == 0) { board[i][j] = '*'; }
-					else { board[i][j] = '|'; }
-				}
-				else { board[i][j] = '-'; }
-
-			}
+			for(int j = 0; j < boardSize; j++) { board[i][j] = '*'; }
 		}
 	}
 	/*
-	 * @Method:
-	 * @Parameters:
-	 * @Returns:
-	 * @Description:
+	 * @Method: makeMove
+	 * @Parameters: integers i,j and char value
+	 * @Returns: Boolean
+	 * @Description: This function takes a row and column and places the passed in
+	 * 				 character(value) to that position (if Possible) and returns true if
+	 * 				 it could make the move and false if not.
 	 * 
 	 */
 	public boolean makeMove(int i, int j, char value) 
 	{
-		if(i > trueSize || j > trueSize || i < 1 || j < 1) { return false; }
+		//make sure the input keeps us inbounds
+		if(i > boardSize || j > boardSize || i < 1 || j < 1) { return false; }
 		else 
 		{
-			//set row to the proper offset
-			if(i == 1) {i = 0;}
-			else if(i == 3) {i = 4;}
-			//set column to the proper offset
-			if(j == 1) {j = 0;}
-			else if(j == 3) {j = 4;}
+			//set row and column to the proper offset
+			i = i - 1;
+			j = j - 1;
 			//if the chosen spot is not already taken then set it
 			if(board[i][j] == '*') 
 			{
@@ -57,10 +49,12 @@ public class gameBoard
 		}
 	}
 	/*
-	 * @Method:
-	 * @Parameters:
-	 * @Returns:
-	 * @Description:
+	 * @Method: winCondition
+	 * @Parameters: None
+	 * @Returns: Boolean
+	 * @Description: This method checks the rows/columns/diagonals 
+	 * 				 for 3 matching symbols to see if the game has 
+	 * 				 winner. it returns true if so and false if not.
 	 * 
 	 */
 	public boolean winCondition() 
@@ -69,30 +63,43 @@ public class gameBoard
 		else
 		{
 			//row check
-			for(int i = 0; i < boardSize; i+=2)
+			for(int i = 0; i < boardSize; i++)
 			{
-				if(board[i][0] != '*' && board[i][0] == board[i][2] && board[i][2] == board[i][4]) { return true; }
+				if(board[i][0] != '*')
+				{
+					if(board[i][0] == board[i][1] && board[i][1] == board[i][2]) { return true; }
+				}
 			}
-			//col check
-			for(int j = 0; j < boardSize; j+=2)
+			//column check
+			for(int i = 0; i < boardSize; i++)
 			{
-				if(board[0][j] != '*' && board[0][j] == board[2][j] && board[2][j] == board[4][j]) { return true; }
+				if(board[0][i] != '*')
+				{
+					if(board[0][i] == board[1][i] && board[1][i] == board[2][i]) { return true; }
+				}
 			}
-			int k = 0;
-			//check first diagonal
-			if(board[k][k] != '*' && board[k][k] == board[k+2][k+2] && board[k+2][k+2] == board[k+4][k+4]) { return true; }
-			//check second diagonal
-			if(board[k+4][k] != '*' && board[k+4][k] == board[k+2][k+2] && board[k+2][k+2] == board[k][k+4]) { return true; }
 			
+			//first diagonal check
+			int i = 0;
+			if(board[i][i] != '*')
+			{
+				if(board[i][i] == board[i+1][i+1] && board[i+1][i+1] == board[i+2][i+2]) { return true; }
+			}
+			//second diagonal check
+			if(board[i+2][i] != '*')
+			{
+				if(board[i+2][i] == board[i+1][i+1] && board[i+1][i+1] == board[i][i+2]) { return true; }
+			}
+
 			//no win
 			return false;
 		}
 	}
 	/*
-	 * @Method:
-	 * @Parameters:
-	 * @Returns:
-	 * @Description:
+	 * @Method: tieCondition
+	 * @Parameters: None
+	 * @Returns: Boolean
+	 * @Description: Checks the board for a tie game.
 	 * 
 	 */
 	public boolean tieCondition() 
@@ -101,10 +108,10 @@ public class gameBoard
 		else { return false; }
 	}
 	/*
-	 * @Method:
-	 * @Parameters:
-	 * @Returns:
-	 * @Description:
+	 * @Method: boardReset
+	 * @Parameters:None
+	 * @Returns: None
+	 * @Description: Resets all the positions of the board back to '*'s
 	 * 
 	 */
 	public void boardReset() 
@@ -112,21 +119,14 @@ public class gameBoard
 		moves = 0;
 		for(int i = 0; i < boardSize; i++) 
 		{
-			for(int j = 0; j < boardSize; j++) 
-			{
-				//only even numbered indices of the board need to be reset to stars
-				if(i % 2 == 0) 
-				{ 
-					if(j % 2 == 0) { board[i][j] = '*'; } 
-				}
-			}
+			for(int j = 0; j < boardSize; j++) { board[i][j] = '*'; }
 		}
 	}
 	/*
-	 * @Method:
-	 * @Parameters:
-	 * @Returns:
-	 * @Description:
+	 * @Method: printBoard
+	 * @Parameters: None
+	 * @Returns: None
+	 * @Description: Prints the gameboard that the users will see in a formatted manner.
 	 * 
 	 */
 	public void printBoard() 
@@ -137,8 +137,21 @@ public class gameBoard
 			{
 				System.out.print(board[i][j]);
 				System.out.print(' ');
+				//column separators
+				if(j < 2) { System.out.print('|'); }
+				System.out.print(' ');
 			}
 			System.out.print('\n');
+			if(i < 2) 
+			{ 
+				//row separators
+				for(int k = 0; k < 5; k++) 
+				{ 
+					System.out.print('-'); 
+					System.out.print(' ');
+				}
+				System.out.print('\n');
+			}
 		}
 	}
 }
