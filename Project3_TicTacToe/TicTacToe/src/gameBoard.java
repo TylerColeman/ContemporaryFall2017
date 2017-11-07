@@ -1,4 +1,7 @@
 /*
+ * Tyler Coleman
+ * 
+ * Gameboard class for use with the "main" game file
  * */
 public class gameBoard 
 {

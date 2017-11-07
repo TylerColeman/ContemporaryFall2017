@@ -38,12 +38,12 @@ public class main
 		Scanner playerInput = new Scanner(System.in);
 		//make a new gameboard
 		gameBoard ticTacToe = new gameBoard();
-		//bools
+		//bools to control the game
 		boolean game, victory, tie, player1Turn, validMove, goodInput;
 		//player input coordinates
 		int input1, input2;
 		
-		//start
+		//start game
 		game = true;
 		while(game) 
 		{
@@ -81,6 +81,7 @@ public class main
 							{
 								System.out.println("Invalid Move! Try again!");
 								ticTacToe.printBoard();
+								//move to the next line and let the user try again
 								playerInput.nextLine();
 							}
 						}
@@ -89,15 +90,18 @@ public class main
 						if(ticTacToe.makeMove(input1, input2, 'X')) 
 						{
 							validMove = true;
+							//check for a winner or a tie game
 							if(ticTacToe.winCondition()) { victory = true; }
 							else if(ticTacToe.tieCondition()) { tie = true; }
 						}
+						//they chose coordinates that were already taken
 						else 
 						{
 							System.out.println("Invalid Move! Try again!");
 							ticTacToe.printBoard();
 						}
 					}
+					//swap turns
 					player1Turn = false;
 				}
 				//player 2's turn
